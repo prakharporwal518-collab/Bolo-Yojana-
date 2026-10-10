@@ -55,7 +55,7 @@ cd backend
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt            # core: no GPU, no keys
 # optional: pip install -r requirements-ml.txt   (Claude, FAISS, sentence-transformers, pytesseract)
-cp .env.example .env                       # add keys if you have them
+cp .env.example .env                       # add keys if you have them (CORS_ORIGIN_REGEX optional)
 uvicorn app.main:app --reload --port 8000
 python -m pytest -q                        # API tests
 
@@ -134,6 +134,24 @@ backend/
     adapters/        llm.py (Claude) · bhashini.py (ASR/NMT/TTS) · indictrans.py (IndicTrans2)
   tests/             pytest suite
 ```
+
+---
+
+## ☁️ Deploy on Render
+
+`render.yaml` is a Render Blueprint that creates both services at once:
+
+1. In the Render dashboard, choose **New → Blueprint** and pick this repo.
+2. Render asks for the secret values `ANTHROPIC_API_KEY`, `BHASHINI_USER_ID` and `BHASHINI_API_KEY`. All are optional; leave them blank to run without keys.
+3. Click **Apply**. You get:
+   - `bolo-yojana-api`: the FastAPI Web Service (free plan, health check `/health`)
+   - `bolo-yojana`: the static PWA, built with the backend URL baked in
+
+**If Render adds a suffix to a URL** (because the name is taken):
+- **Backend URL changed:** update `VITE_API_URL` on the `bolo-yojana` static site and redeploy it. `VITE_*` values are read at build time.
+- **Frontend URL changed:** nothing to do. `CORS_ORIGIN_REGEX` already accepts `https://bolo-yojana-<suffix>.onrender.com`.
+
+Free-tier backends sleep after about 15 minutes idle. While the backend wakes up, the app answers in the browser, so nothing breaks. Open `/health` on the backend before a demo to wake it. Never put secrets in `VITE_*` variables, because they end up in public JavaScript.
 
 ---
 

@@ -1,0 +1,73 @@
+# Render Blueprint for Bolo Yojana — creates both services in one step.
+# Render dashboard → New → Blueprint → pick this repo.
+#
+# If Render adds a suffix to a service URL (because the name is taken), update
+# VITE_API_URL below/in the dashboard and redeploy the frontend. CORS already
+# accepts suffixed frontend URLs via CORS_ORIGIN_REGEX.
+
+services:
+  # ---------------- Backend: FastAPI ----------------
+  - type: web
+    name: bolo-yojana-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt anthropic
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      # Shared knowledge base lives in the frontend folder (Render clones the whole repo).
+      - key: DATA_DIR
+        value: ../frontend/src/data
+      - key: CORS_ORIGINS
+        value: https://bolo-yojana.onrender.com,http://localhost:5173
+      - key: CORS_ORIGIN_REGEX
+        value: ^https://bolo-yojana(-[a-z0-9]+)?\.onrender\.com$
+      # TF-IDF keeps memory well under the free tier's 512 MB (FAISS + embeddings would not fit).
+      - key: VECTOR_STORE
+        value: tfidf
+      - key: TRANSLATE_PROVIDER
+        value: auto
+      - key: LLM_MODEL
+        value: claude-opus-5-5
+      # Secrets — Render asks for these when you create the Blueprint. Leave blank to skip;
+      # the app then answers straight from the verified scheme data.
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: BHASHINI_USER_ID
+        sync: false
+      - key: BHASHINI_API_KEY
+        sync: false
+      - key: BHASHINI_PIPELINE_ID
+        value: 64392f96daac500b55c543cd
+
+  # ---------------- Frontend: static PWA ----------------
+  - type: web
+    name: bolo-yojana
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    headers:
+      # Always fetch the newest service worker so app updates reach users.
+      - path: /sw.js
+        name: Cache-Control
+        value: no-cache
+      # Vite file names contain a content hash, so they can be cached forever.
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    envVars:
+      # Build-time only. Never put secrets in VITE_* — they end up in public JavaScript.
+      - key: NODE_VERSION
+        value: "22"
+      - key: VITE_API_URL
+        value: https://bolo-yojana-api.onrender.com
+      - key: VITE_STT_PROVIDER
+        value: webspeech
+      - key: VITE_TTS_PROVIDER
+        value: browser
+      - key: VITE_TRANSLATE_PROVIDER
+        value: offline

@@ -26,7 +26,13 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(messag
 log = logging.getLogger("bolo.api")
 
 app = FastAPI(title="Bolo Yojana API", version="1.0.0", description="हर योजना, आपकी भाषा में — grounded, multilingual scheme assistance.")
-app.add_middleware(CORSMiddleware, allow_origins=config.CORS_ORIGINS, allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=config.CORS_ORIGINS,
+    allow_origin_regex=config.CORS_ORIGIN_REGEX,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 Lang = Literal["hi", "hl", "en"]
 MAX_TEXT = 4000

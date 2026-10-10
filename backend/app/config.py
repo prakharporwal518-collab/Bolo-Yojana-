@@ -22,6 +22,8 @@ BASE = Path(__file__).resolve().parent.parent
 
 DATA_DIR = (BASE / os.getenv("DATA_DIR", "../frontend/src/data")).resolve()
 CORS_ORIGINS = [o.strip() for o in os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:4173").split(",") if o.strip()]
+# Optional regex, e.g. ^https://bolo-yojana(-[a-z0-9]+)?\.onrender\.com$ (Render may add a suffix to the URL)
+CORS_ORIGIN_REGEX = os.getenv("CORS_ORIGIN_REGEX") or None
 
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 LLM_MODEL = os.getenv("LLM_MODEL", "claude-opus-5-5")
