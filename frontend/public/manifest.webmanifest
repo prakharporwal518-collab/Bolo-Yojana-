@@ -1,0 +1,23 @@
+{
+  "name": "बोलो योजना — Bolo Yojana",
+  "short_name": "बोलो योजना",
+  "description": "हर योजना, आपकी भाषा में — Voice-first assistant for government schemes",
+  "lang": "hi",
+  "start_url": "/#/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFBF5",
+  "theme_color": "#FF9933",
+  "categories": ["government", "utilities", "education"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "पूछें · Ask", "url": "/#/assistant?listen=1", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "पात्रता · Eligibility", "url": "/#/eligibility", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

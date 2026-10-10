@@ -1,0 +1,766 @@
+{
+ "_meta": {
+  "description": "Dialect normalization layer. Maps common Malwi / Bundeli / Nimadi words (Devanagari + Roman) to standard Hindi BEFORE intent detection. Add a new dialect by adding entries here — no code change needed.",
+  "dialects": {
+   "malwi": {
+    "hi": "मालवी",
+    "en": "Malwi",
+    "region": "Indore, Ujjain, Dewas, Ratlam, Mandsaur, Vidisha (west)"
+   },
+   "bundeli": {
+    "hi": "बुंदेली",
+    "en": "Bundeli",
+    "region": "Sagar, Chhatarpur, Tikamgarh, Damoh, Jhansi"
+   },
+   "nimadi": {
+    "hi": "निमाड़ी",
+    "en": "Nimadi",
+    "region": "Khargone, Khandwa, Barwani, Burhanpur"
+   }
+  }
+ },
+ "entries": [
+  {
+   "term": "म्हारो",
+   "roman": [
+    "mharo",
+    "mhāro"
+   ],
+   "std": "मेरा",
+   "stdRoman": "mera",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "म्हारा",
+   "roman": [
+    "mhara"
+   ],
+   "std": "मेरे",
+   "stdRoman": "mere",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "म्हारी",
+   "roman": [
+    "mhari"
+   ],
+   "std": "मेरी",
+   "stdRoman": "meri",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "म्हने",
+   "roman": [
+    "mhane",
+    "mhaane"
+   ],
+   "std": "मुझे",
+   "stdRoman": "mujhe",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "म्हारे",
+   "roman": [
+    "mhare"
+   ],
+   "std": "मेरे",
+   "stdRoman": "mere",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "थारो",
+   "roman": [
+    "tharo"
+   ],
+   "std": "तुम्हारा",
+   "stdRoman": "tumhara",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "थारी",
+   "roman": [
+    "thari"
+   ],
+   "std": "तुम्हारी",
+   "stdRoman": "tumhari",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "थने",
+   "roman": [
+    "thane"
+   ],
+   "std": "तुम्हें",
+   "stdRoman": "tumhe",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "हूँ",
+   "roman": [],
+   "std": "मैं",
+   "stdRoman": "main",
+   "dialects": [
+    "malwi"
+   ],
+   "context": "start"
+  },
+  {
+   "term": "कई",
+   "roman": [],
+   "std": "क्या",
+   "stdRoman": "kya",
+   "dialects": [
+    "malwi"
+   ],
+   "weak": true
+  },
+  {
+   "term": "काई",
+   "roman": [
+    "kaai"
+   ],
+   "std": "क्या",
+   "stdRoman": "kya",
+   "dialects": [
+    "nimadi",
+    "malwi"
+   ]
+  },
+  {
+   "term": "कोनी",
+   "roman": [
+    "koni"
+   ],
+   "std": "नहीं",
+   "stdRoman": "nahi",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "नी",
+   "roman": [],
+   "std": "नहीं",
+   "stdRoman": "nahi",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "छे",
+   "roman": [
+    "chhe"
+   ],
+   "std": "है",
+   "stdRoman": "hai",
+   "dialects": [
+    "nimadi",
+    "malwi"
+   ]
+  },
+  {
+   "term": "थो",
+   "roman": [
+    "tho"
+   ],
+   "std": "था",
+   "stdRoman": "tha",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "कसो",
+   "roman": [
+    "kaso"
+   ],
+   "std": "कैसा",
+   "stdRoman": "kaisa",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "कसे",
+   "roman": [
+    "kase"
+   ],
+   "std": "कैसे",
+   "stdRoman": "kaise",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "कठे",
+   "roman": [
+    "kathe"
+   ],
+   "std": "कहाँ",
+   "stdRoman": "kahan",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "अठे",
+   "roman": [
+    "athe"
+   ],
+   "std": "यहाँ",
+   "stdRoman": "yahan",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "वठे",
+   "roman": [
+    "vathe"
+   ],
+   "std": "वहाँ",
+   "stdRoman": "wahan",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "घणो",
+   "roman": [
+    "ghano",
+    "ghanu"
+   ],
+   "std": "बहुत",
+   "stdRoman": "bahut",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "अबे",
+   "roman": [
+    "abe"
+   ],
+   "std": "अब",
+   "stdRoman": "ab",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "जदे",
+   "roman": [
+    "jade"
+   ],
+   "std": "जब",
+   "stdRoman": "jab",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "तदे",
+   "roman": [
+    "tade"
+   ],
+   "std": "तब",
+   "stdRoman": "tab",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "आपणो",
+   "roman": [
+    "aapno",
+    "aapano"
+   ],
+   "std": "अपना",
+   "stdRoman": "apna",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "पइसो",
+   "roman": [
+    "paiso"
+   ],
+   "std": "पैसा",
+   "stdRoman": "paisa",
+   "dialects": [
+    "malwi",
+    "bundeli"
+   ]
+  },
+  {
+   "term": "पइसा",
+   "roman": [
+    "paisa"
+   ],
+   "std": "पैसा",
+   "stdRoman": "paisa",
+   "dialects": [
+    "malwi",
+    "bundeli"
+   ],
+   "weak": true
+  },
+  {
+   "term": "मिलेगो",
+   "roman": [
+    "milego"
+   ],
+   "std": "मिलेगा",
+   "stdRoman": "milega",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "करनो",
+   "roman": [
+    "karno"
+   ],
+   "std": "करना",
+   "stdRoman": "karna",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "जानो",
+   "roman": [
+    "jaano"
+   ],
+   "std": "जाना",
+   "stdRoman": "jaana",
+   "dialects": [
+    "malwi"
+   ],
+   "weak": true
+  },
+  {
+   "term": "रउं",
+   "roman": [
+    "raun"
+   ],
+   "std": "रहती हूँ",
+   "stdRoman": "rehti hoon",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "बई",
+   "roman": [
+    "bai"
+   ],
+   "std": "औरत",
+   "stdRoman": "aurat",
+   "dialects": [
+    "malwi"
+   ]
+  },
+  {
+   "term": "छोरा",
+   "roman": [
+    "chhora"
+   ],
+   "std": "लड़का",
+   "stdRoman": "ladka",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "छोरी",
+   "roman": [
+    "chhori"
+   ],
+   "std": "लड़की",
+   "stdRoman": "ladki",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "आवजो",
+   "roman": [
+    "aavjo"
+   ],
+   "std": "आइए",
+   "stdRoman": "aaiye",
+   "dialects": [
+    "nimadi",
+    "malwi"
+   ]
+  },
+  {
+   "term": "हमाओ",
+   "roman": [
+    "hamao"
+   ],
+   "std": "हमारा",
+   "stdRoman": "hamara",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "हमाई",
+   "roman": [
+    "hamai"
+   ],
+   "std": "हमारी",
+   "stdRoman": "hamari",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "हमाए",
+   "roman": [
+    "hamae"
+   ],
+   "std": "हमारे",
+   "stdRoman": "hamare",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "तुमाओ",
+   "roman": [
+    "tumao"
+   ],
+   "std": "तुम्हारा",
+   "stdRoman": "tumhara",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "मोय",
+   "roman": [
+    "moy",
+    "mohe"
+   ],
+   "std": "मुझे",
+   "stdRoman": "mujhe",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "तोय",
+   "roman": [
+    "toy"
+   ],
+   "std": "तुझे",
+   "stdRoman": "tujhe",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "नईं",
+   "roman": [
+    "nain"
+   ],
+   "std": "नहीं",
+   "stdRoman": "nahi",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "हतो",
+   "roman": [
+    "hato"
+   ],
+   "std": "था",
+   "stdRoman": "tha",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "हते",
+   "roman": [
+    "hate"
+   ],
+   "std": "थे",
+   "stdRoman": "the",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "का",
+   "roman": [],
+   "std": "क्या",
+   "stdRoman": "kya",
+   "dialects": [
+    "bundeli"
+   ],
+   "context": "start"
+  },
+  {
+   "term": "कितै",
+   "roman": [
+    "kitai"
+   ],
+   "std": "कहाँ",
+   "stdRoman": "kahan",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "इतै",
+   "roman": [
+    "itai"
+   ],
+   "std": "यहाँ",
+   "stdRoman": "yahan",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "उतै",
+   "roman": [
+    "utai"
+   ],
+   "std": "वहाँ",
+   "stdRoman": "wahan",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "बिलात",
+   "roman": [
+    "bilat"
+   ],
+   "std": "बहुत",
+   "stdRoman": "bahut",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "अबै",
+   "roman": [
+    "abai"
+   ],
+   "std": "अब",
+   "stdRoman": "ab",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "कबै",
+   "roman": [
+    "kabai"
+   ],
+   "std": "कब",
+   "stdRoman": "kab",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "जबै",
+   "roman": [
+    "jabai"
+   ],
+   "std": "जब",
+   "stdRoman": "jab",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "काय",
+   "roman": [
+    "kaay"
+   ],
+   "std": "क्यों",
+   "stdRoman": "kyon",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "लुगाई",
+   "roman": [
+    "lugai"
+   ],
+   "std": "पत्नी",
+   "stdRoman": "patni",
+   "dialects": [
+    "bundeli",
+    "malwi"
+   ]
+  },
+  {
+   "term": "मोड़ा",
+   "roman": [
+    "moda"
+   ],
+   "std": "लड़का",
+   "stdRoman": "ladka",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "मोड़ी",
+   "roman": [
+    "modi"
+   ],
+   "std": "लड़की",
+   "stdRoman": "ladki",
+   "dialects": [
+    "bundeli"
+   ],
+   "weak": true
+  },
+  {
+   "term": "दद्दा",
+   "roman": [
+    "dadda"
+   ],
+   "std": "दादा",
+   "stdRoman": "dada",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "बतकाव",
+   "roman": [
+    "batkaav"
+   ],
+   "std": "बातचीत",
+   "stdRoman": "baatcheet",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "ठाड़े",
+   "roman": [
+    "thade"
+   ],
+   "std": "खड़े",
+   "stdRoman": "khade",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "हओ",
+   "roman": [
+    "hao"
+   ],
+   "std": "हाँ",
+   "stdRoman": "haan",
+   "dialects": [
+    "bundeli",
+    "malwi"
+   ]
+  },
+  {
+   "term": "हव",
+   "roman": [
+    "hav"
+   ],
+   "std": "हाँ",
+   "stdRoman": "haan",
+   "dialects": [
+    "nimadi",
+    "malwi"
+   ]
+  },
+  {
+   "term": "मिलहै",
+   "roman": [
+    "milhai"
+   ],
+   "std": "मिलेगा",
+   "stdRoman": "milega",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "करबो",
+   "roman": [
+    "karbo"
+   ],
+   "std": "करना",
+   "stdRoman": "karna",
+   "dialects": [
+    "bundeli"
+   ]
+  },
+  {
+   "term": "आयो",
+   "roman": [
+    "aayo"
+   ],
+   "std": "आया",
+   "stdRoman": "aaya",
+   "dialects": [
+    "malwi",
+    "nimadi"
+   ]
+  },
+  {
+   "term": "लगेगो",
+   "roman": [
+    "lagego"
+   ],
+   "std": "लगेगा",
+   "stdRoman": "lagega",
+   "dialects": [
+    "malwi"
+   ]
+  }
+ ]
+}

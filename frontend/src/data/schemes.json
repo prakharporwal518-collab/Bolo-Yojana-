@@ -1,0 +1,340 @@
+{
+  "_meta": {
+    "description": "Verified knowledge base for Bolo Yojana. Answers are generated ONLY from this file (RAG source of truth). Text keys: hi = Hindi (Devanagari), hl = Hinglish (Roman Hindi), en = English.",
+    "version": "1.0.0",
+    "disclaimer": "Prototype data compiled from the official portals linked in each scheme. Re-verify amounts and rules on the official site before production use."
+  },
+  "schemes": [
+    {
+      "id": "pm-kisan",
+      "icon": "🌾",
+      "color": "#138808",
+      "name": { "hi": "पीएम-किसान सम्मान निधि", "hl": "PM-Kisan Samman Nidhi", "en": "PM-Kisan Samman Nidhi" },
+      "tagline": { "hi": "किसान परिवार को हर साल ₹6,000", "hl": "Kisan parivar ko har saal ₹6,000", "en": "₹6,000 every year for farmer families" },
+      "keywords": ["kisan", "kisaan", "pm kisan", "pmkisan", "samman nidhi", "किसान", "पीएम किसान", "सम्मान निधि", "kheti", "खेती", "farmer", "6000", "2000", "kist", "किस्त", "installment", "zameen", "ज़मीन", "जमीन"],
+      "officialUrl": "https://pmkisan.gov.in/",
+      "sourceName": "pmkisan.gov.in (Ministry of Agriculture & Farmers Welfare)",
+      "lastVerified": "2026-10-01",
+      "helpline": { "number": "155261", "alt": "011-24300606", "label": { "hi": "पीएम-किसान हेल्पलाइन", "hl": "PM-Kisan helpline", "en": "PM-Kisan helpline" } },
+      "benefit": {
+        "amount": 6000,
+        "period": "year",
+        "text": {
+          "hi": "हर साल ₹6,000 मिलते हैं। यह पैसा ₹2,000 की 3 किस्तों में, हर 4 महीने में, सीधे आपके बैंक खाते में आता है।",
+          "hl": "Har saal ₹6,000 milte hain. Yeh paisa ₹2,000 ki 3 kiston mein, har 4 mahine mein, seedhe aapke bank khate mein aata hai.",
+          "en": "You get ₹6,000 every year, paid in 3 instalments of ₹2,000 every 4 months, directly into your bank account."
+        }
+      },
+      "original": {
+        "en": "Under the Scheme, an income support of Rs. 6,000/- per year in three equal instalments shall be provided to all land holding farmer families, subject to the exclusion criteria. The amount shall be released through Direct Benefit Transfer mode into the Aadhaar-seeded bank accounts of the beneficiaries. Mandatory e-KYC and land seeding shall be pre-requisites for release of benefits.",
+        "hi": "योजना के अंतर्गत, अपवर्जन मानदंडों के अधीन, सभी भूमिधारक कृषक परिवारों को प्रति वर्ष रु. 6,000/- की आय सहायता तीन समान किस्तों में प्रदान की जाएगी। राशि प्रत्यक्ष लाभ अंतरण के माध्यम से लाभार्थियों के आधार-संबद्ध बैंक खातों में जारी की जाएगी। लाभ जारी करने हेतु ई-केवाईसी एवं भूमि सीडिंग अनिवार्य पूर्व-शर्तें होंगी।"
+      },
+      "simple": {
+        "hi": "जिस किसान परिवार के नाम पर खेती की ज़मीन है, उसे सरकार हर साल ₹6,000 देती है। पैसा सीधे बैंक खाते में आता है। इसके लिए e-KYC और ज़मीन का रिकॉर्ड जुड़ा होना ज़रूरी है।",
+        "hl": "Jis kisan parivar ke naam par kheti ki zameen hai, use sarkar har saal ₹6,000 deti hai. Paisa seedhe bank khate mein aata hai. Iske liye e-KYC aur zameen ka record juda hona zaroori hai.",
+        "en": "If your farmer family owns farm land, the government gives you ₹6,000 a year, straight into your bank account. You must finish e-KYC and get your land record linked."
+      },
+      "eligibility": {
+        "yes": {
+          "hi": ["खेती की ज़मीन आपके (या परिवार के) नाम पर हो", "परिवार = पति, पत्नी और नाबालिग बच्चे", "बैंक खाता आधार से जुड़ा हो"],
+          "hl": ["Kheti ki zameen aapke (ya parivar ke) naam par ho", "Parivar = pati, patni aur nabalig bachche", "Bank khata Aadhaar se juda ho"],
+          "en": ["Farm land is registered in your family's name", "Family = husband, wife and minor children", "Bank account is linked with Aadhaar"]
+        },
+        "no": {
+          "hi": ["परिवार में कोई इनकम टैक्स भरता हो", "कोई सरकारी कर्मचारी या ₹10,000+ पेंशन वाला हो (ग्रुप-D/चतुर्थ श्रेणी छोड़कर)", "डॉक्टर, इंजीनियर, वकील, CA जैसे पेशेवर", "मंत्री, सांसद, विधायक, महापौर जैसे पद पर (अभी या पहले)"],
+          "hl": ["Parivar mein koi income tax bharta ho", "Koi sarkari karmchari ya ₹10,000+ pension wala ho (Group-D chhodkar)", "Doctor, engineer, vakil, CA jaise professional", "Mantri, MP, MLA, mayor jaise pad par (abhi ya pehle)"],
+          "en": ["Anyone in the family paid income tax", "A government employee or pensioner with ₹10,000+ pension (except Group-D/MTS)", "Doctors, engineers, lawyers, CAs and similar professionals", "Current or former ministers, MPs, MLAs, mayors"]
+        }
+      },
+      "documents": [
+        { "id": "aadhaar", "icon": "🪪", "name": { "hi": "आधार कार्ड", "hl": "Aadhaar card", "en": "Aadhaar card" } },
+        { "id": "land", "icon": "📜", "name": { "hi": "ज़मीन के कागज़ (खसरा / खतौनी / B-1)", "hl": "Zameen ke kagaz (Khasra / Khatauni / B-1)", "en": "Land records (Khasra / Khatauni / B-1)" } },
+        { "id": "bank", "icon": "🏦", "name": { "hi": "आधार से जुड़ी बैंक पासबुक", "hl": "Aadhaar se judi bank passbook", "en": "Aadhaar-linked bank passbook" } },
+        { "id": "mobile", "icon": "📱", "name": { "hi": "मोबाइल नंबर (OTP के लिए)", "hl": "Mobile number (OTP ke liye)", "en": "Mobile number (for OTP)" } }
+      ],
+      "steps": {
+        "hi": ["pmkisan.gov.in पर 'New Farmer Registration' चुनें, या नज़दीकी CSC (जन सेवा केंद्र) जाएँ", "आधार नंबर और मोबाइल डालें, OTP से पुष्टि करें", "ज़मीन का खसरा और बैंक की जानकारी भरें", "पटवारी / तहसील से ज़मीन की जाँच होगी", "e-KYC पूरा करें (OTP, अँगूठा या चेहरे से)"],
+        "hl": ["pmkisan.gov.in par 'New Farmer Registration' chunein, ya nazdeeki CSC jaayein", "Aadhaar number aur mobile daalein, OTP se confirm karein", "Zameen ka Khasra aur bank ki jaankari bharein", "Patwari / tehsil se zameen ki jaanch hogi", "e-KYC poora karein (OTP, angootha ya chehre se)"],
+        "en": ["Choose 'New Farmer Registration' on pmkisan.gov.in, or visit the nearest CSC", "Enter Aadhaar and mobile number, confirm with OTP", "Fill land (Khasra) and bank details", "Patwari / Tehsil verifies the land record", "Complete e-KYC (OTP, fingerprint or face)"]
+      },
+      "faqs": [
+        {
+          "id": "not-received",
+          "topic": "status",
+          "keywords": ["nahi aaya", "nahin aaya", "nahi mila", "नहीं आया", "नहीं मिला", "ruk", "रुक", "band", "बंद", "not received", "status", "kab aayega", "कब आएगा", "atka", "अटका"],
+          "a": {
+            "hi": "अगर किसान वाला पैसा नहीं आया, तो ये 4 चीज़ें जाँचें: 1) e-KYC पूरा हुआ या नहीं। 2) बैंक खाता आधार से जुड़ा (DBT चालू) है या नहीं। 3) ज़मीन की सीडिंग (Land Seeding) हुई या नहीं। 4) नाम और खाते की जानकारी सही है या नहीं। pmkisan.gov.in पर 'Know Your Status' में मोबाइल नंबर डालकर स्थिति देखें। मदद के लिए 155261 पर फ़ोन करें या पटवारी / CSC से मिलें।",
+            "hl": "Agar kisan wala paisa nahi aaya, toh yeh 4 cheezein check karein: 1) e-KYC poora hua ya nahi. 2) Bank khata Aadhaar se juda (DBT chalu) hai ya nahi. 3) Zameen ki seeding (Land Seeding) hui ya nahi. 4) Naam aur khate ki jaankari sahi hai ya nahi. pmkisan.gov.in par 'Know Your Status' mein mobile number daal kar status dekhein. Madad ke liye 155261 par phone karein ya Patwari / CSC se milein.",
+            "en": "If your PM-Kisan money has not arrived, check 4 things: 1) Is e-KYC complete? 2) Is your bank account linked with Aadhaar (DBT enabled)? 3) Is land seeding done? 4) Are your name and account details correct? Check 'Know Your Status' on pmkisan.gov.in with your mobile number. For help call 155261 or meet the Patwari / CSC."
+          }
+        },
+        {
+          "id": "ekyc",
+          "topic": "ekyc",
+          "keywords": ["ekyc", "e-kyc", "kyc", "ई-केवाईसी", "केवाईसी", "otp", "angootha", "अँगूठा", "face"],
+          "a": {
+            "hi": "e-KYC तीन तरीकों से होता है: 1) pmkisan.gov.in पर आधार OTP से, 2) नज़दीकी CSC पर अँगूठा लगाकर, 3) PM-Kisan मोबाइल ऐप में चेहरे से। e-KYC के बिना किस्त रुक जाती है।",
+            "hl": "e-KYC teen tareekon se hota hai: 1) pmkisan.gov.in par Aadhaar OTP se, 2) nazdeeki CSC par angootha laga kar, 3) PM-Kisan mobile app mein chehre se. e-KYC ke bina kist ruk jaati hai.",
+            "en": "e-KYC can be done 3 ways: 1) Aadhaar OTP on pmkisan.gov.in, 2) fingerprint at the nearest CSC, 3) face authentication in the PM-Kisan app. Without e-KYC, instalments stop."
+          }
+        }
+      ],
+      "questions": [
+        { "id": "ownland", "type": "yesno", "icon": "🌾", "ask": { "hi": "क्या खेती की ज़मीन आपके या आपके परिवार के नाम पर है?", "hl": "Kya kheti ki zameen aapke ya aapke parivar ke naam par hai?", "en": "Is the farm land registered in your or your family's name?" } },
+        { "id": "taxpayer", "type": "yesno", "icon": "🧾", "ask": { "hi": "क्या परिवार में कोई इनकम टैक्स भरता है?", "hl": "Kya parivar mein koi income tax bharta hai?", "en": "Does anyone in your family pay income tax?" } },
+        { "id": "govtjob", "type": "yesno", "icon": "🏛️", "ask": { "hi": "क्या परिवार में कोई सरकारी नौकरी में है, या ₹10,000 से ज़्यादा पेंशन लेता है? (चपरासी / ग्रुप-D को छोड़कर)", "hl": "Kya parivar mein koi sarkari naukri mein hai, ya ₹10,000 se zyada pension leta hai? (Group-D chhodkar)", "en": "Is anyone in your family a government employee, or gets a pension above ₹10,000? (except Group-D)" } },
+        { "id": "professional", "type": "yesno", "icon": "🩺", "ask": { "hi": "क्या परिवार में कोई डॉक्टर, इंजीनियर, वकील या CA है?", "hl": "Kya parivar mein koi doctor, engineer, vakil ya CA hai?", "en": "Is anyone in your family a doctor, engineer, lawyer or CA?" } },
+        { "id": "ekyc", "type": "yesno", "icon": "👆", "required": false, "ask": { "hi": "क्या आपका e-KYC हो चुका है?", "hl": "Kya aapka e-KYC ho chuka hai?", "en": "Have you completed e-KYC?" } }
+      ],
+      "rules": [
+        { "if": { "q": "ownland", "op": "==", "value": "no" }, "then": "not_eligible", "reason": { "hi": "यह योजना सिर्फ़ उन किसानों के लिए है जिनके नाम पर खेती की ज़मीन है।", "hl": "Yeh yojana sirf un kisano ke liye hai jinke naam par kheti ki zameen hai.", "en": "This scheme is only for farmers who own farm land." } },
+        { "if": { "q": "taxpayer", "op": "==", "value": "yes" }, "then": "not_eligible", "reason": { "hi": "इनकम टैक्स भरने वाले परिवार इस योजना में नहीं आते।", "hl": "Income tax bharne wale parivar is yojana mein nahi aate.", "en": "Income-tax-paying families are excluded." } },
+        { "if": { "q": "govtjob", "op": "==", "value": "yes" }, "then": "not_eligible", "reason": { "hi": "सरकारी कर्मचारी या ₹10,000+ पेंशन वाले परिवार इस योजना में नहीं आते।", "hl": "Sarkari karmchari ya ₹10,000+ pension wale parivar is yojana mein nahi aate.", "en": "Families with a government employee or ₹10,000+ pensioner are excluded." } },
+        { "if": { "q": "professional", "op": "==", "value": "yes" }, "then": "not_eligible", "reason": { "hi": "डॉक्टर, इंजीनियर, वकील, CA जैसे पेशेवरों के परिवार इसमें नहीं आते।", "hl": "Doctor, engineer, vakil, CA jaise professionals ke parivar ismein nahi aate.", "en": "Families of registered professionals (doctors, engineers, lawyers, CAs) are excluded." } },
+        { "if": { "q": "ekyc", "op": "==", "value": "no" }, "then": "note", "reason": { "hi": "ध्यान दें: e-KYC के बिना पैसा नहीं आएगा। CSC पर जाकर e-KYC करवाएँ।", "hl": "Dhyan dein: e-KYC ke bina paisa nahi aayega. CSC par jaakar e-KYC karwayein.", "en": "Note: money will not be released without e-KYC. Get it done at a CSC." } }
+      ],
+      "default": { "result": "eligible", "reason": { "hi": "आपके जवाबों के हिसाब से आप पीएम-किसान के लिए पात्र लगते हैं।", "hl": "Aapke jawabon ke hisaab se aap PM-Kisan ke liye patra lagte hain.", "en": "Based on your answers, you appear eligible for PM-Kisan." } },
+      "form": [
+        { "id": "name", "type": "text", "label": { "hi": "किसान का नाम", "hl": "Kisan ka naam", "en": "Farmer's name" }, "ask": { "hi": "आपका नाम क्या है?", "hl": "Aapka naam kya hai?", "en": "What is your name?" } },
+        { "id": "relative", "type": "text", "label": { "hi": "पिता / पति का नाम", "hl": "Pita / Pati ka naam", "en": "Father's / Husband's name" }, "ask": { "hi": "आपके पिता या पति का नाम क्या है?", "hl": "Aapke pita ya pati ka naam kya hai?", "en": "What is your father's or husband's name?" } },
+        { "id": "village", "type": "text", "label": { "hi": "गाँव", "hl": "Gaon", "en": "Village" }, "ask": { "hi": "आप किस गाँव में रहते हैं?", "hl": "Aap kis gaon mein rehte hain?", "en": "Which village do you live in?" } },
+        { "id": "district", "type": "text", "label": { "hi": "ज़िला", "hl": "Zila", "en": "District" }, "ask": { "hi": "आपका ज़िला कौन सा है?", "hl": "Aapka zila kaun sa hai?", "en": "Which district?" } },
+        { "id": "khasra", "type": "text", "label": { "hi": "खसरा नंबर", "hl": "Khasra number", "en": "Khasra number" }, "ask": { "hi": "आपकी ज़मीन का खसरा नंबर क्या है?", "hl": "Aapki zameen ka Khasra number kya hai?", "en": "What is your land's Khasra number?" } },
+        { "id": "landArea", "type": "number", "label": { "hi": "ज़मीन (एकड़)", "hl": "Zameen (acre)", "en": "Land (acres)" }, "ask": { "hi": "आपके पास कितने एकड़ ज़मीन है?", "hl": "Aapke paas kitne acre zameen hai?", "en": "How many acres of land do you have?" } },
+        { "id": "mobile", "type": "phone", "label": { "hi": "मोबाइल नंबर", "hl": "Mobile number", "en": "Mobile number" }, "ask": { "hi": "आपका मोबाइल नंबर बताइए।", "hl": "Aapka mobile number bataiye.", "en": "Please tell your mobile number." } },
+        { "id": "bank", "type": "text", "label": { "hi": "बैंक का नाम", "hl": "Bank ka naam", "en": "Bank name" }, "ask": { "hi": "आपका खाता किस बैंक में है?", "hl": "Aapka khata kis bank mein hai?", "en": "Which bank is your account in?" } }
+      ]
+    },
+    {
+      "id": "pmjay",
+      "icon": "🏥",
+      "color": "#1E3A8A",
+      "name": { "hi": "आयुष्मान भारत (PM-JAY)", "hl": "Ayushman Bharat (PM-JAY)", "en": "Ayushman Bharat (PM-JAY)" },
+      "tagline": { "hi": "परिवार को हर साल ₹5 लाख तक मुफ़्त इलाज", "hl": "Parivar ko har saal ₹5 lakh tak muft ilaaj", "en": "Free treatment up to ₹5 lakh per family per year" },
+      "keywords": ["ayushman", "aayushman", "आयुष्मान", "pmjay", "pm-jay", "jay", "golden card", "hospital", "अस्पताल", "aspatal", "ilaj", "ilaaj", "इलाज", "bimari", "बीमारी", "operation", "ऑपरेशन", "5 lakh", "पाँच लाख", "health", "vay vandana", "वय वंदना"],
+      "officialUrl": "https://pmjay.gov.in/",
+      "sourceName": "pmjay.gov.in & beneficiary.nha.gov.in (National Health Authority)",
+      "lastVerified": "2026-10-01",
+      "helpline": { "number": "14555", "label": { "hi": "आयुष्मान हेल्पलाइन", "hl": "Ayushman helpline", "en": "Ayushman helpline" } },
+      "benefit": {
+        "amount": 500000,
+        "period": "year",
+        "text": {
+          "hi": "हर परिवार को हर साल ₹5 लाख तक का इलाज मुफ़्त (कैशलेस) मिलता है — सरकारी और जुड़े हुए प्राइवेट अस्पतालों में, पूरे भारत में। भर्ती से 3 दिन पहले और 15 दिन बाद का खर्च भी शामिल है।",
+          "hl": "Har parivar ko har saal ₹5 lakh tak ka ilaaj muft (cashless) milta hai — sarkari aur jude hue private aspatalon mein, poore Bharat mein. Bharti se 3 din pehle aur 15 din baad ka kharch bhi shaamil hai.",
+          "en": "Each family gets cashless treatment up to ₹5 lakh per year at government and empanelled private hospitals across India, including 3 days before and 15 days after admission."
+        }
+      },
+      "original": {
+        "en": "AB PM-JAY provides health cover of Rs. 5 lakh per family per year for secondary and tertiary care hospitalization to eligible beneficiary families identified on the basis of deprivation and occupational criteria of SECC 2011, along with state-specific expansions. Services are cashless and paperless at empanelled health care providers. Senior citizens aged 70 years and above are entitled to benefits irrespective of socio-economic status under the Ayushman Vay Vandana card.",
+        "hi": "एबी पीएम-जेएवाई के अंतर्गत एसईसीसी 2011 के वंचन एवं व्यावसायिक मानदंडों तथा राज्य-विशिष्ट विस्तार के आधार पर चिन्हित पात्र लाभार्थी परिवारों को द्वितीयक एवं तृतीयक देखभाल हेतु अस्पताल में भर्ती के लिए प्रति परिवार प्रति वर्ष रु. 5 लाख का स्वास्थ्य कवर प्रदान किया जाता है। 70 वर्ष एवं अधिक आयु के वरिष्ठ नागरिक सामाजिक-आर्थिक स्थिति से निरपेक्ष आयुष्मान वय वंदना कार्ड के अंतर्गत पात्र हैं।"
+      },
+      "simple": {
+        "hi": "आयुष्मान कार्ड से अस्पताल में भर्ती होने पर ₹5 लाख तक का इलाज मुफ़्त होता है। गरीब परिवार (जिनका नाम सरकारी सूची में है) इसे बनवा सकते हैं। 70 साल या उससे ज़्यादा उम्र के सभी बुज़ुर्गों को यह मिलता है, चाहे आमदनी कितनी भी हो।",
+        "hl": "Ayushman card se aspatal mein bharti hone par ₹5 lakh tak ka ilaaj muft hota hai. Garib parivar (jinka naam sarkari list mein hai) ise banwa sakte hain. 70 saal ya usse zyada umar ke sabhi buzurgon ko yeh milta hai, chahe aamdani kitni bhi ho.",
+        "en": "With an Ayushman card, hospital treatment up to ₹5 lakh is free. Poor families whose names are in the government list can get it. Everyone aged 70 or above gets it, whatever their income."
+      },
+      "eligibility": {
+        "yes": {
+          "hi": ["परिवार का नाम SECC 2011 / आयुष्मान सूची में हो", "मध्य प्रदेश में: पात्र राशन कार्ड (NFSA) वाले परिवार", "70 साल या ज़्यादा उम्र के सभी बुज़ुर्ग (वय वंदना कार्ड)"],
+          "hl": ["Parivar ka naam SECC 2011 / Ayushman list mein ho", "Madhya Pradesh mein: patra ration card (NFSA) wale parivar", "70 saal ya zyada umar ke sabhi buzurg (Vay Vandana card)"],
+          "en": ["Family listed in SECC 2011 / Ayushman beneficiary list", "In Madhya Pradesh: eligible NFSA ration card families", "All senior citizens aged 70+ (Vay Vandana card)"]
+        },
+        "no": {
+          "hi": ["आम तौर पर सरकारी नौकरी वाले परिवार", "इनकम टैक्स भरने वाले परिवार"],
+          "hl": ["Aam taur par sarkari naukri wale parivar", "Income tax bharne wale parivar"],
+          "en": ["Usually families with a government employee", "Income-tax-paying families"]
+        }
+      },
+      "documents": [
+        { "id": "aadhaar", "icon": "🪪", "name": { "hi": "आधार कार्ड (परिवार के हर सदस्य का)", "hl": "Aadhaar card (har sadasya ka)", "en": "Aadhaar card (each member)" } },
+        { "id": "ration", "icon": "🍚", "name": { "hi": "राशन कार्ड / समग्र आईडी", "hl": "Ration card / Samagra ID", "en": "Ration card / Samagra ID" } },
+        { "id": "mobile", "icon": "📱", "name": { "hi": "मोबाइल नंबर (OTP के लिए)", "hl": "Mobile number (OTP ke liye)", "en": "Mobile number (for OTP)" } }
+      ],
+      "steps": {
+        "hi": ["beneficiary.nha.gov.in या 'आयुष्मान ऐप' पर अपना नाम जाँचें", "नाम हो तो आधार से e-KYC करें", "नज़दीकी CSC, सरकारी अस्पताल या 'आयुष्मान मित्र' से कार्ड बनवाएँ", "इलाज के समय अस्पताल में आयुष्मान कार्ड / आधार दिखाएँ"],
+        "hl": ["beneficiary.nha.gov.in ya 'Ayushman App' par apna naam check karein", "Naam ho toh Aadhaar se e-KYC karein", "Nazdeeki CSC, sarkari aspatal ya 'Ayushman Mitra' se card banwayein", "Ilaaj ke samay aspatal mein Ayushman card / Aadhaar dikhayein"],
+        "en": ["Check your name on beneficiary.nha.gov.in or the Ayushman App", "If listed, do Aadhaar e-KYC", "Get the card made at a CSC, government hospital or via an 'Ayushman Mitra'", "Show the Ayushman card / Aadhaar at the hospital"]
+      },
+      "faqs": [
+        {
+          "id": "senior",
+          "topic": "eligibility",
+          "keywords": ["70", "sattar", "सत्तर", "buzurg", "बुज़ुर्ग", "बुजुर्ग", "senior", "vay vandana", "वय वंदना", "dada", "dadi", "दादा", "दादी"],
+          "a": {
+            "hi": "70 साल या उससे ज़्यादा उम्र के हर बुज़ुर्ग को 'आयुष्मान वय वंदना कार्ड' मिलता है — आमदनी कितनी भी हो। इससे ₹5 लाख तक का इलाज मुफ़्त होता है। आयुष्मान ऐप या CSC से आधार लेकर बनवाएँ।",
+            "hl": "70 saal ya usse zyada umar ke har buzurg ko 'Ayushman Vay Vandana card' milta hai — aamdani kitni bhi ho. Isse ₹5 lakh tak ka ilaaj muft hota hai. Ayushman App ya CSC se Aadhaar lekar banwayein.",
+            "en": "Every senior citizen aged 70+ gets the 'Ayushman Vay Vandana card', regardless of income. It covers treatment up to ₹5 lakh. Get it via the Ayushman App or a CSC with Aadhaar."
+          }
+        },
+        {
+          "id": "hospital",
+          "topic": "hospital",
+          "keywords": ["kaun sa hospital", "kaunsa aspatal", "कौन सा अस्पताल", "hospital list", "empanelled", "nazdeek", "नज़दीक"],
+          "a": {
+            "hi": "आयुष्मान कार्ड सरकारी अस्पतालों और योजना से जुड़े प्राइवेट अस्पतालों में चलता है। नज़दीकी अस्पताल pmjay.gov.in पर 'Find Hospital' में देखें या 14555 पर फ़ोन करें।",
+            "hl": "Ayushman card sarkari aspatalon aur yojana se jude private aspatalon mein chalta hai. Nazdeeki aspatal pmjay.gov.in par 'Find Hospital' mein dekhein ya 14555 par phone karein.",
+            "en": "The card works in government hospitals and empanelled private hospitals. Find the nearest one under 'Find Hospital' on pmjay.gov.in or call 14555."
+          }
+        }
+      ],
+      "questions": [
+        { "id": "age", "type": "number", "icon": "🎂", "ask": { "hi": "परिवार में सबसे बड़े सदस्य की उम्र कितनी है?", "hl": "Parivar mein sabse bade sadasya ki umar kitni hai?", "en": "What is the age of the eldest family member?" } },
+        { "id": "govtjob", "type": "yesno", "icon": "🏛️", "ask": { "hi": "क्या परिवार में कोई सरकारी नौकरी में है?", "hl": "Kya parivar mein koi sarkari naukri mein hai?", "en": "Is anyone in the family a government employee?" } },
+        { "id": "taxpayer", "type": "yesno", "icon": "🧾", "ask": { "hi": "क्या परिवार में कोई इनकम टैक्स भरता है?", "hl": "Kya parivar mein koi income tax bharta hai?", "en": "Does anyone in the family pay income tax?" } },
+        { "id": "ration", "type": "choice", "icon": "🍚", "ask": { "hi": "आपके पास कौन सा राशन कार्ड है? अंत्योदय (पीला), BPL / प्राथमिकता वाला, या कोई नहीं?", "hl": "Aapke paas kaun sa ration card hai? Antyodaya, BPL / priority wala, ya koi nahi?", "en": "Which ration card do you have? Antyodaya, BPL / priority household, or none?" },
+          "options": [
+            { "value": "aay", "icon": "🟡", "label": { "hi": "अंत्योदय", "hl": "Antyodaya", "en": "Antyodaya (AAY)" }, "match": ["antyodaya", "antodaya", "अंत्योदय", "aay", "peela", "पीला", "yellow"] },
+            { "value": "phh", "icon": "🟢", "label": { "hi": "BPL / प्राथमिकता", "hl": "BPL / Priority", "en": "BPL / Priority (NFSA)" }, "match": ["bpl", "बीपीएल", "priority", "pratham", "प्राथमिकता", "garibi", "गरीबी", "nfsa"] },
+            { "value": "none", "icon": "⚪", "label": { "hi": "कोई नहीं / APL", "hl": "Koi nahi / APL", "en": "None / APL" }, "match": ["koi nahi", "कोई नहीं", "none", "apl", "नहीं है", "nahi hai"] }
+          ]
+        },
+        { "id": "listed", "type": "yesno", "icon": "📋", "required": false, "ask": { "hi": "क्या आपको प्रधानमंत्री का आयुष्मान पत्र मिला है, या सूची में नाम है?", "hl": "Kya aapko PM ka Ayushman patra mila hai, ya list mein naam hai?", "en": "Did you receive the PM's Ayushman letter, or is your name in the list?" } }
+      ],
+      "rules": [
+        { "if": { "q": "age", "op": ">=", "value": 70 }, "then": "eligible_final", "reason": { "hi": "70 साल या ज़्यादा उम्र होने से आपके परिवार के बुज़ुर्ग को 'आयुष्मान वय वंदना कार्ड' मिल सकता है — आमदनी नहीं देखी जाती।", "hl": "70 saal ya zyada umar hone se aapke parivar ke buzurg ko 'Ayushman Vay Vandana card' mil sakta hai — aamdani nahi dekhi jaati.", "en": "Being 70 or older, your family elder can get the 'Ayushman Vay Vandana card' — income is not checked." } },
+        { "if": { "q": "govtjob", "op": "==", "value": "yes" }, "then": "not_eligible", "reason": { "hi": "सरकारी नौकरी वाले परिवार आम तौर पर इस योजना में नहीं आते (70+ बुज़ुर्ग को छोड़कर)।", "hl": "Sarkari naukri wale parivar aam taur par is yojana mein nahi aate (70+ buzurg ko chhodkar).", "en": "Families with a government employee are generally not covered (except elders aged 70+)." } },
+        { "if": { "q": "taxpayer", "op": "==", "value": "yes" }, "then": "not_eligible", "reason": { "hi": "इनकम टैक्स भरने वाले परिवार आम तौर पर इस योजना में नहीं आते (70+ बुज़ुर्ग को छोड़कर)।", "hl": "Income tax bharne wale parivar aam taur par is yojana mein nahi aate (70+ buzurg ko chhodkar).", "en": "Income-tax-paying families are generally not covered (except elders aged 70+)." } },
+        { "if": { "q": "ration", "op": "in", "value": ["aay", "phh"] }, "then": "eligible", "reason": { "hi": "मध्य प्रदेश में पात्र राशन कार्ड (अंत्योदय / प्राथमिकता) वाले परिवार आयुष्मान कार्ड बनवा सकते हैं।", "hl": "Madhya Pradesh mein patra ration card (Antyodaya / Priority) wale parivar Ayushman card banwa sakte hain.", "en": "In Madhya Pradesh, families with an eligible ration card (Antyodaya / Priority) can get an Ayushman card." } },
+        { "if": { "q": "listed", "op": "==", "value": "yes" }, "then": "eligible", "reason": { "hi": "आपका नाम आयुष्मान सूची में है, इसलिए आप कार्ड बनवा सकते हैं।", "hl": "Aapka naam Ayushman list mein hai, isliye aap card banwa sakte hain.", "en": "Your name is in the Ayushman list, so you can get the card." } }
+      ],
+      "default": { "result": "need_info", "reason": { "hi": "पक्का बताने के लिए आपका नाम सूची में देखना होगा। beneficiary.nha.gov.in पर या 14555 पर फ़ोन करके जाँचें।", "hl": "Pakka batane ke liye aapka naam list mein dekhna hoga. beneficiary.nha.gov.in par ya 14555 par phone karke check karein.", "en": "To be sure, your name must be checked in the list. Check on beneficiary.nha.gov.in or call 14555." } },
+      "form": [
+        { "id": "name", "type": "text", "label": { "hi": "मुखिया का नाम", "hl": "Mukhiya ka naam", "en": "Head of family" }, "ask": { "hi": "परिवार के मुखिया का नाम क्या है?", "hl": "Parivar ke mukhiya ka naam kya hai?", "en": "What is the name of the head of family?" } },
+        { "id": "age", "type": "number", "label": { "hi": "उम्र", "hl": "Umar", "en": "Age" }, "ask": { "hi": "उनकी उम्र कितनी है?", "hl": "Unki umar kitni hai?", "en": "What is their age?" } },
+        { "id": "members", "type": "number", "label": { "hi": "परिवार के सदस्य", "hl": "Parivar ke sadasya", "en": "Family members" }, "ask": { "hi": "परिवार में कितने लोग हैं?", "hl": "Parivar mein kitne log hain?", "en": "How many people are in the family?" } },
+        { "id": "village", "type": "text", "label": { "hi": "गाँव", "hl": "Gaon", "en": "Village" }, "ask": { "hi": "आप किस गाँव में रहते हैं?", "hl": "Aap kis gaon mein rehte hain?", "en": "Which village do you live in?" } },
+        { "id": "district", "type": "text", "label": { "hi": "ज़िला", "hl": "Zila", "en": "District" }, "ask": { "hi": "आपका ज़िला कौन सा है?", "hl": "Aapka zila kaun sa hai?", "en": "Which district?" } },
+        { "id": "samagra", "type": "text", "label": { "hi": "समग्र आईडी / राशन कार्ड नंबर", "hl": "Samagra ID / Ration card number", "en": "Samagra ID / Ration card no." }, "ask": { "hi": "आपकी समग्र आईडी या राशन कार्ड नंबर बताइए।", "hl": "Aapki Samagra ID ya ration card number bataiye.", "en": "Please tell your Samagra ID or ration card number." } },
+        { "id": "mobile", "type": "phone", "label": { "hi": "मोबाइल नंबर", "hl": "Mobile number", "en": "Mobile number" }, "ask": { "hi": "आपका मोबाइल नंबर बताइए।", "hl": "Aapka mobile number bataiye.", "en": "Please tell your mobile number." } }
+      ]
+    },
+    {
+      "id": "ladli-behna",
+      "icon": "👩",
+      "color": "#C2410C",
+      "name": { "hi": "मुख्यमंत्री लाड़ली बहना योजना (म.प्र.)", "hl": "Mukhyamantri Ladli Behna Yojana (MP)", "en": "Mukhyamantri Ladli Behna Yojana (MP)" },
+      "tagline": { "hi": "बहनों को हर महीने ₹1,500 सीधे खाते में", "hl": "Behno ko har mahine ₹1,500 seedhe khate mein", "en": "₹1,500 every month for women, direct to bank" },
+      "keywords": ["ladli", "laadli", "लाड़ली", "लाडली", "behna", "bahna", "behena", "बहना", "बहन", "1250", "1500", "mahila", "महिला", "aurat", "औरत", "lugai", "लुगाई", "bai", "बई"],
+      "officialUrl": "https://cmladlibahna.mp.gov.in/",
+      "sourceName": "cmladlibahna.mp.gov.in (Women & Child Development Dept., Govt. of MP)",
+      "lastVerified": "2026-10-01",
+      "helpline": { "number": "181", "label": { "hi": "सीएम हेल्पलाइन (म.प्र.)", "hl": "CM Helpline (MP)", "en": "CM Helpline (MP)" } },
+      "benefit": {
+        "amount": 1500,
+        "period": "month",
+        "text": {
+          "hi": "हर महीने ₹1,500 सीधे आपके अपने बैंक खाते में आते हैं — साल में ₹18,000। (पहले ₹1,250 मिलते थे, नवंबर 2025 से ₹1,500।)",
+          "hl": "Har mahine ₹1,500 seedhe aapke apne bank khate mein aate hain — saal mein ₹18,000. (Pehle ₹1,250 milte the, November 2025 se ₹1,500.)",
+          "en": "₹1,500 every month directly into your own bank account — ₹18,000 a year. (Earlier ₹1,250; ₹1,500 from November 2025.)"
+        }
+      },
+      "original": {
+        "en": "Under the Mukhyamantri Ladli Behna Yojana, eligible married women domiciled in Madhya Pradesh, including widows, divorced and abandoned women, aged 21 to 60 years, shall be provided monthly financial assistance through DBT into their single Aadhaar-linked, DBT-enabled bank account, subject to the condition that the combined annual family income does not exceed Rs. 2.5 lakh, no member is an income tax payer or a regular/permanent government employee or pensioner, and the family does not own more than 5 acres of combined agricultural land or a four-wheeler (excluding tractor).",
+        "hi": "मुख्यमंत्री लाड़ली बहना योजना के अंतर्गत म.प्र. की स्थानीय निवासी 21 से 60 वर्ष आयु की पात्र विवाहित महिलाओं, जिनमें विधवा, तलाकशुदा एवं परित्यक्ता सम्मिलित हैं, को उनके एकल आधार-लिंक्ड डीबीटी सक्षम बैंक खाते में मासिक आर्थिक सहायता प्रदान की जाएगी, बशर्ते परिवार की सम्मिलित वार्षिक आय रु. 2.5 लाख से अधिक न हो, कोई सदस्य आयकरदाता अथवा नियमित/स्थायी शासकीय सेवक या पेंशनभोगी न हो, तथा परिवार के पास 5 एकड़ से अधिक सम्मिलित कृषि भूमि अथवा चार-पहिया वाहन (ट्रैक्टर को छोड़कर) न हो।"
+      },
+      "simple": {
+        "hi": "मध्य प्रदेश की शादीशुदा बहनें (विधवा और तलाकशुदा भी), जिनकी उम्र 21 से 60 साल है, उन्हें हर महीने पैसा मिलता है। शर्त: परिवार की साल की कमाई ढाई लाख से कम हो, घर में कोई सरकारी नौकरी या टैक्स भरने वाला न हो, 5 एकड़ से ज़्यादा ज़मीन और कार न हो।",
+        "hl": "Madhya Pradesh ki shaadishuda behnein (vidhwa aur talaakshuda bhi), jinki umar 21 se 60 saal hai, unhein har mahine paisa milta hai. Shart: parivar ki saal ki kamai dhai lakh se kam ho, ghar mein koi sarkari naukri ya tax bharne wala na ho, 5 acre se zyada zameen aur car na ho.",
+        "en": "Married women of Madhya Pradesh (including widowed and divorced), aged 21–60, get money every month. Conditions: family income below ₹2.5 lakh a year, no government employee or taxpayer at home, not more than 5 acres of land, and no car."
+      },
+      "eligibility": {
+        "yes": {
+          "hi": ["मध्य प्रदेश की निवासी महिला", "शादीशुदा, विधवा, तलाकशुदा या परित्यक्ता", "उम्र 21 से 60 साल", "परिवार की सालाना आय ₹2.5 लाख (ढाई लाख) से कम"],
+          "hl": ["Madhya Pradesh ki niwasi mahila", "Shaadishuda, vidhwa, talaakshuda ya parityakta", "Umar 21 se 60 saal", "Parivar ki saalana aay ₹2.5 lakh (dhai lakh) se kam"],
+          "en": ["Woman resident of Madhya Pradesh", "Married, widowed, divorced or abandoned", "Age 21 to 60 years", "Annual family income below ₹2.5 lakh"]
+        },
+        "no": {
+          "hi": ["परिवार में कोई इनकम टैक्स भरता हो", "कोई नियमित / स्थायी सरकारी कर्मचारी या पेंशनर हो", "परिवार के पास 5 एकड़ से ज़्यादा खेती की ज़मीन हो", "चार-पहिया गाड़ी हो (ट्रैक्टर छोड़कर)", "कोई सांसद / विधायक (अभी या पहले) हो"],
+          "hl": ["Parivar mein koi income tax bharta ho", "Koi niyamit / sthayi sarkari karmchari ya pensioner ho", "Parivar ke paas 5 acre se zyada kheti ki zameen ho", "Char-pahiya gaadi ho (tractor chhodkar)", "Koi MP / MLA (abhi ya pehle) ho"],
+          "en": ["Anyone in the family pays income tax", "A regular/permanent government employee or pensioner", "Family owns more than 5 acres of farm land", "Owns a four-wheeler (tractor excepted)", "A current or former MP / MLA in the family"]
+        }
+      },
+      "documents": [
+        { "id": "samagra", "icon": "🆔", "name": { "hi": "समग्र परिवार आईडी और सदस्य आईडी", "hl": "Samagra parivar ID aur sadasya ID", "en": "Samagra Family ID & Member ID" } },
+        { "id": "aadhaar", "icon": "🪪", "name": { "hi": "आधार कार्ड (समग्र से e-KYC हुआ हो)", "hl": "Aadhaar card (Samagra se e-KYC hua ho)", "en": "Aadhaar card (e-KYC done with Samagra)" } },
+        { "id": "bank", "icon": "🏦", "name": { "hi": "अपने नाम का बैंक खाता — आधार से जुड़ा, DBT चालू", "hl": "Apne naam ka bank khata — Aadhaar se juda, DBT chalu", "en": "Own bank account — Aadhaar-linked, DBT enabled" } },
+        { "id": "mobile", "icon": "📱", "name": { "hi": "मोबाइल नंबर", "hl": "Mobile number", "en": "Mobile number" } },
+        { "id": "photo", "icon": "📷", "name": { "hi": "पासपोर्ट साइज़ फ़ोटो", "hl": "Passport size photo", "en": "Passport-size photo" } }
+      ],
+      "steps": {
+        "hi": ["फ़ॉर्म ग्राम पंचायत / वार्ड में लगने वाले कैंप में भरे जाते हैं — आंगनवाड़ी दीदी या पंचायत सचिव से पूछें", "समग्र आईडी में आधार का e-KYC करवाएँ", "बैंक खाता आधार से जोड़कर DBT चालू करवाएँ", "कैंप में फ़ोटो खिंचवाकर फ़ॉर्म जमा करें और पावती (रसीद) लें", "ध्यान दें: नए फ़ॉर्म तभी भरे जाते हैं जब सरकार नया चरण खोलती है"],
+        "hl": ["Form Gram Panchayat / ward mein lagne wale camp mein bhare jaate hain — Anganwadi didi ya Panchayat sachiv se poochhein", "Samagra ID mein Aadhaar ka e-KYC karwayein", "Bank khata Aadhaar se jodkar DBT chalu karwayein", "Camp mein photo khinchwakar form jama karein aur paavti (raseed) lein", "Dhyan dein: naye form tabhi bhare jaate hain jab sarkar naya charan kholti hai"],
+        "en": ["Forms are filled at camps in the Gram Panchayat / ward — ask the Anganwadi worker or Panchayat secretary", "Complete Aadhaar e-KYC in your Samagra ID", "Link your bank account with Aadhaar and enable DBT", "At the camp, get your photo taken, submit the form and take the acknowledgement", "Note: new forms are accepted only when the government opens a new phase"]
+      },
+      "faqs": [
+        {
+          "id": "when-money",
+          "topic": "status",
+          "keywords": ["kab aata", "kab aayega", "कब आता", "कब आएगा", "tarikh", "तारीख", "date", "nahi aaya", "नहीं आया", "band", "बंद", "status", "kist", "किस्त"],
+          "a": {
+            "hi": "लाड़ली बहना का पैसा आम तौर पर हर महीने की 10 तारीख के आसपास आता है। पैसा न आए तो: 1) cmladlibahna.mp.gov.in पर 'आवेदन एवं भुगतान की स्थिति' देखें, 2) बैंक में DBT चालू है या नहीं पूछें, 3) समग्र e-KYC जाँचें। मदद के लिए 181 पर फ़ोन करें।",
+            "hl": "Ladli Behna ka paisa aam taur par har mahine ki 10 tarikh ke aaspaas aata hai. Paisa na aaye toh: 1) cmladlibahna.mp.gov.in par 'Aavedan evam Bhugtan ki Sthiti' dekhein, 2) bank mein DBT chalu hai ya nahi poochhein, 3) Samagra e-KYC check karein. Madad ke liye 181 par phone karein.",
+            "en": "Ladli Behna money usually arrives around the 10th of every month. If it doesn't: 1) check 'Application & Payment Status' on cmladlibahna.mp.gov.in, 2) ask your bank whether DBT is enabled, 3) check Samagra e-KYC. Call 181 for help."
+          }
+        },
+        {
+          "id": "new-registration",
+          "topic": "apply",
+          "keywords": ["naya form", "नया फ़ॉर्म", "नया फॉर्म", "registration", "panjiyan", "पंजीयन", "form kab", "फ़ॉर्म कब", "फॉर्म कब", "teesra charan", "तीसरा चरण"],
+          "a": {
+            "hi": "नए फ़ॉर्म सिर्फ़ तभी भरे जाते हैं जब सरकार नया चरण घोषित करती है। तब ग्राम पंचायत / वार्ड में कैंप लगते हैं। अभी की स्थिति के लिए आंगनवाड़ी दीदी, पंचायत सचिव या 181 से पूछें। तब तक समग्र e-KYC और बैंक DBT तैयार रखें।",
+            "hl": "Naye form sirf tabhi bhare jaate hain jab sarkar naya charan ghoshit karti hai. Tab Gram Panchayat / ward mein camp lagte hain. Abhi ki sthiti ke liye Anganwadi didi, Panchayat sachiv ya 181 se poochhein. Tab tak Samagra e-KYC aur bank DBT taiyaar rakhein.",
+            "en": "New forms are accepted only when the government announces a new phase, through camps in the Gram Panchayat / ward. Ask the Anganwadi worker, Panchayat secretary or 181 for the current status. Meanwhile keep Samagra e-KYC and bank DBT ready."
+          }
+        }
+      ],
+      "questions": [
+        { "id": "gender", "type": "choice", "icon": "🧑", "ask": { "hi": "आप महिला हैं या पुरुष?", "hl": "Aap mahila hain ya purush?", "en": "Are you a woman or a man?" },
+          "options": [
+            { "value": "female", "icon": "👩", "label": { "hi": "महिला", "hl": "Mahila", "en": "Woman" }, "match": ["mahila", "महिला", "aurat", "औरत", "stri", "स्त्री", "female", "woman", "lady", "bai", "बई", "lugai", "लुगाई", "behen", "बहन"] },
+            { "value": "male", "icon": "👨", "label": { "hi": "पुरुष", "hl": "Purush", "en": "Man" }, "match": ["purush", "पुरुष", "aadmi", "आदमी", "male", "man", "mard", "मर्द"] }
+          ]
+        },
+        { "id": "state", "type": "choice", "icon": "📍", "ask": { "hi": "क्या आप मध्य प्रदेश में रहती हैं?", "hl": "Kya aap Madhya Pradesh mein rehti hain?", "en": "Do you live in Madhya Pradesh?" },
+          "options": [
+            { "value": "mp", "icon": "✅", "label": { "hi": "हाँ, म.प्र.", "hl": "Haan, MP", "en": "Yes, MP" }, "match": ["haan", "han", "हाँ", "हां", "yes", "mp", "madhya", "मध्य", "ji", "जी", "हओ", "हव"] },
+            { "value": "other", "icon": "🗺️", "label": { "hi": "दूसरा राज्य", "hl": "Doosra rajya", "en": "Other state" }, "match": ["nahi", "नहीं", "no", "doosra", "दूसरा", "other", "नी", "कोनी"] }
+          ]
+        },
+        { "id": "age", "type": "number", "icon": "🎂", "ask": { "hi": "आपकी उम्र कितनी है?", "hl": "Aapki umar kitni hai?", "en": "How old are you?" } },
+        { "id": "marital", "type": "choice", "icon": "💍", "ask": { "hi": "क्या आप शादीशुदा हैं? (विधवा या तलाकशुदा भी बता सकती हैं)", "hl": "Kya aap shaadishuda hain? (Vidhwa ya talaakshuda bhi bata sakti hain)", "en": "Are you married? (You may also say widowed or divorced)" },
+          "options": [
+            { "value": "married", "icon": "💍", "label": { "hi": "शादीशुदा", "hl": "Shaadishuda", "en": "Married" }, "match": ["haan", "han", "हाँ", "हां", "shaadi", "शादी", "शादीशुदा", "married", "vivahit", "विवाहित", "ji", "जी", "हओ"] },
+            { "value": "widow", "icon": "🤍", "label": { "hi": "विधवा", "hl": "Vidhwa", "en": "Widowed" }, "match": ["vidhwa", "विधवा", "widow"] },
+            { "value": "divorced", "icon": "📄", "label": { "hi": "तलाकशुदा / परित्यक्ता", "hl": "Talaakshuda / Parityakta", "en": "Divorced / Abandoned" }, "match": ["talaq", "talak", "तलाक", "divorce", "parityakta", "परित्यक्ता", "chhod", "छोड़"] },
+            { "value": "unmarried", "icon": "🙋", "label": { "hi": "अविवाहित", "hl": "Avivahit", "en": "Unmarried" }, "match": ["nahi", "नहीं", "unmarried", "avivahit", "अविवाहित", "kunwari", "कुंवारी", "नी", "कोनी"] }
+          ]
+        },
+        { "id": "income", "type": "amount", "icon": "💰", "ask": { "hi": "आपके पूरे परिवार की साल भर की कमाई कितनी है? (जैसे — डेढ़ लाख)", "hl": "Aapke poore parivar ki saal bhar ki kamai kitni hai? (jaise — dedh lakh)", "en": "What is your whole family's yearly income? (e.g. 1.5 lakh)" } },
+        { "id": "taxpayer", "type": "yesno", "icon": "🧾", "ask": { "hi": "क्या परिवार में कोई इनकम टैक्स भरता है?", "hl": "Kya parivar mein koi income tax bharta hai?", "en": "Does anyone in the family pay income tax?" } },
+        { "id": "govtjob", "type": "yesno", "icon": "🏛️", "ask": { "hi": "क्या परिवार में कोई पक्की सरकारी नौकरी में है या सरकारी पेंशन लेता है?", "hl": "Kya parivar mein koi pakki sarkari naukri mein hai ya sarkari pension leta hai?", "en": "Is anyone in the family a permanent government employee or pensioner?" } },
+        { "id": "land", "type": "yesno", "icon": "🌾", "ask": { "hi": "क्या परिवार के पास 5 एकड़ से ज़्यादा खेती की ज़मीन है?", "hl": "Kya parivar ke paas 5 acre se zyada kheti ki zameen hai?", "en": "Does the family own more than 5 acres of farm land?" } },
+        { "id": "car", "type": "yesno", "icon": "🚗", "ask": { "hi": "क्या घर में ट्रैक्टर के अलावा कोई चार-पहिया गाड़ी (कार / जीप) है?", "hl": "Kya ghar mein tractor ke alawa koi char-pahiya gaadi (car / jeep) hai?", "en": "Does the family own a four-wheeler (car / jeep) other than a tractor?" } }
+      ],
+      "rules": [
+        { "if": { "q": "gender", "op": "==", "value": "male" }, "then": "not_eligible", "reason": { "hi": "यह योजना सिर्फ़ महिलाओं (बहनों) के लिए है। घर की महिला सदस्य के लिए जाँच करें।", "hl": "Yeh yojana sirf mahilaon (behno) ke liye hai. Ghar ki mahila sadasya ke liye check karein.", "en": "This scheme is only for women. Check for a woman in your family instead." } },
+        { "if": { "q": "state", "op": "==", "value": "other" }, "then": "not_eligible", "reason": { "hi": "यह योजना सिर्फ़ मध्य प्रदेश की निवासी महिलाओं के लिए है।", "hl": "Yeh yojana sirf Madhya Pradesh ki niwasi mahilaon ke liye hai.", "en": "This scheme is only for residents of Madhya Pradesh." } },
+        { "if": { "q": "age", "op": "<", "value": 21 }, "then": "not_eligible", "reason": { "hi": "उम्र कम से कम 21 साल होनी चाहिए।", "hl": "Umar kam se kam 21 saal honi chahiye.", "en": "You must be at least 21 years old." } },
+        { "if": { "q": "age", "op": ">", "value": 60 }, "then": "not_eligible", "reason": { "hi": "उम्र 60 साल से ज़्यादा नहीं होनी चाहिए।", "hl": "Umar 60 saal se zyada nahi honi chahiye.", "en": "Age must not be above 60 years." } },
+        { "if": { "q": "marital", "op": "==", "value": "unmarried" }, "then": "not_eligible", "reason": { "hi": "यह योजना शादीशुदा, विधवा, तलाकशुदा या परित्यक्ता महिलाओं के लिए है।", "hl": "Yeh yojana shaadishuda, vidhwa, talaakshuda ya parityakta mahilaon ke liye hai.", "en": "This scheme is for married, widowed, divorced or abandoned women." } },
+        { "if": { "q": "income", "op": ">", "value": 250000 }, "then": "not_eligible", "reason": { "hi": "परिवार की साल की कमाई ₹2.5 लाख (ढाई लाख) से कम होनी चाहिए।", "hl": "Parivar ki saal ki kamai ₹2.5 lakh (dhai lakh) se kam honi chahiye.", "en": "Annual family income must be below ₹2.5 lakh." } },
+        { "if": { "q": "taxpayer", "op": "==", "value": "yes" }, "then": "not_eligible", "reason": { "hi": "इनकम टैक्स भरने वाले परिवार इस योजना में नहीं आते।", "hl": "Income tax bharne wale parivar is yojana mein nahi aate.", "en": "Income-tax-paying families are excluded." } },
+        { "if": { "q": "govtjob", "op": "==", "value": "yes" }, "then": "not_eligible", "reason": { "hi": "पक्की सरकारी नौकरी या पेंशन वाले परिवार इस योजना में नहीं आते।", "hl": "Pakki sarkari naukri ya pension wale parivar is yojana mein nahi aate.", "en": "Families with a permanent government employee or pensioner are excluded." } },
+        { "if": { "q": "land", "op": "==", "value": "yes" }, "then": "not_eligible", "reason": { "hi": "5 एकड़ से ज़्यादा ज़मीन वाले परिवार इस योजना में नहीं आते।", "hl": "5 acre se zyada zameen wale parivar is yojana mein nahi aate.", "en": "Families with more than 5 acres of land are excluded." } },
+        { "if": { "q": "car", "op": "==", "value": "yes" }, "then": "not_eligible", "reason": { "hi": "चार-पहिया गाड़ी (ट्रैक्टर छोड़कर) वाले परिवार इस योजना में नहीं आते।", "hl": "Char-pahiya gaadi (tractor chhodkar) wale parivar is yojana mein nahi aate.", "en": "Families owning a four-wheeler (other than a tractor) are excluded." } }
+      ],
+      "default": { "result": "eligible", "reason": { "hi": "आपके जवाबों के हिसाब से आप लाड़ली बहना योजना के लिए पात्र लगती हैं।", "hl": "Aapke jawabon ke hisaab se aap Ladli Behna Yojana ke liye patra lagti hain.", "en": "Based on your answers, you appear eligible for Ladli Behna Yojana." } },
+      "form": [
+        { "id": "name", "type": "text", "label": { "hi": "आवेदिका का नाम", "hl": "Aavedika ka naam", "en": "Applicant's name" }, "ask": { "hi": "आपका नाम क्या है?", "hl": "Aapka naam kya hai?", "en": "What is your name?" } },
+        { "id": "relative", "type": "text", "label": { "hi": "पति का नाम", "hl": "Pati ka naam", "en": "Husband's name" }, "ask": { "hi": "आपके पति का नाम क्या है?", "hl": "Aapke pati ka naam kya hai?", "en": "What is your husband's name?" } },
+        { "id": "age", "type": "number", "label": { "hi": "उम्र", "hl": "Umar", "en": "Age" }, "ask": { "hi": "आपकी उम्र कितनी है?", "hl": "Aapki umar kitni hai?", "en": "How old are you?" } },
+        { "id": "village", "type": "text", "label": { "hi": "गाँव / वार्ड", "hl": "Gaon / Ward", "en": "Village / Ward" }, "ask": { "hi": "आप किस गाँव या वार्ड में रहती हैं?", "hl": "Aap kis gaon ya ward mein rehti hain?", "en": "Which village or ward do you live in?" } },
+        { "id": "district", "type": "text", "label": { "hi": "ज़िला", "hl": "Zila", "en": "District" }, "ask": { "hi": "आपका ज़िला कौन सा है?", "hl": "Aapka zila kaun sa hai?", "en": "Which district?" } },
+        { "id": "samagra", "type": "text", "label": { "hi": "समग्र सदस्य आईडी", "hl": "Samagra member ID", "en": "Samagra member ID" }, "ask": { "hi": "आपकी समग्र सदस्य आईडी बताइए।", "hl": "Aapki Samagra member ID bataiye.", "en": "Please tell your Samagra member ID." } },
+        { "id": "mobile", "type": "phone", "label": { "hi": "मोबाइल नंबर", "hl": "Mobile number", "en": "Mobile number" }, "ask": { "hi": "आपका मोबाइल नंबर बताइए।", "hl": "Aapka mobile number bataiye.", "en": "Please tell your mobile number." } },
+        { "id": "bank", "type": "text", "label": { "hi": "बैंक का नाम", "hl": "Bank ka naam", "en": "Bank name" }, "ask": { "hi": "आपका खाता किस बैंक में है?", "hl": "Aapka khata kis bank mein hai?", "en": "Which bank is your account in?" } }
+      ]
+    }
+  ]
+}
