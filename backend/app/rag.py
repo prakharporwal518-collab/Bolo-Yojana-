@@ -209,7 +209,7 @@ def answer(text: str, lang_override: str = "auto", context_scheme_id: str | None
         generated = llm.grounded_answer(text, r["chunks"], lang)
         if generated:
             text_out = generated
-            provider += f"+{config.LLM_MODEL}"
+            provider += f"+{llm.model_name()}"
             if llm.is_unsure(generated):
                 confidence, score = "low", 0.2
 

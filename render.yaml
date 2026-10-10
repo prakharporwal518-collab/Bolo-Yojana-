@@ -30,10 +30,17 @@ services:
         value: tfidf
       - key: TRANSLATE_PROVIDER
         value: auto
+      # LLM: auto = Gemini if GEMINI_API_KEY is set, else Claude if ANTHROPIC_API_KEY is set, else none.
+      - key: LLM_PROVIDER
+        value: auto
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
       - key: LLM_MODEL
         value: claude-opus-5-5
       # Secrets — Render asks for these when you create the Blueprint. Leave blank to skip;
       # the app then answers straight from the verified scheme data.
+      - key: GEMINI_API_KEY
+        sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: BHASHINI_USER_ID
