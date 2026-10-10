@@ -1,12 +1,15 @@
-"""LLM adapter (Claude via the official Anthropic SDK).
+"""LLM adapter — Google Gemini (REST via httpx) or Claude (official Anthropic SDK).
 
-Used for (a) grounded answers restricted to retrieved chunks, (b) 5th-grade simplification,
+Pick with LLM_PROVIDER=auto|gemini|anthropic|none. "auto" uses whichever key is set
+(GEMINI_API_KEY first, then ANTHROPIC_API_KEY). Used for (a) grounded answers restricted to retrieved chunks, (b) 5th-grade simplification,
 (c) translation fallback. Every call is optional: if the SDK/key is missing or the call fails,
 callers fall back to deterministic, data-only behaviour.
 """
 from __future__ import annotations
 
 import logging
+
+import httpx
 
 from .. import config
 
@@ -35,8 +38,25 @@ Keep every fact, number, date, amount, name and these terms unchanged: Aadhaar, 
 Use short sentences (max 12 words), everyday words, respectful tone. Output only the rewritten text."""
 
 
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+
+
+def provider() -> str | None:
+    """Which LLM is active, or None (then callers use deterministic, data-only answers)."""
+    p = config.LLM_PROVIDER
+    if p in ("gemini", "auto") and config.GEMINI_API_KEY:
+        return "gemini"
+    if p in ("anthropic", "claude", "auto") and config.ANTHROPIC_API_KEY:
+        return "anthropic"
+    return None
+
+
 def available() -> bool:
-    return bool(config.ANTHROPIC_API_KEY)
+    return provider() is not None
+
+
+def model_name() -> str | None:
+    return {"gemini": config.GEMINI_MODEL, "anthropic": config.LLM_MODEL}.get(provider())
 
 
 def _get_client():
@@ -48,28 +68,59 @@ def _get_client():
     return _client
 
 
+def _complete_anthropic(system: str, user: str, max_tokens: int) -> str | None:
+    resp = _get_client().beta.messages.create(
+        model=config.LLM_MODEL,
+        max_tokens=max_tokens,
+        system=system,
+        messages=[{"role": "user", "content": user}],
+        output_config={"effort": "low"},  # short, factual chat replies
+        betas=["server-side-fallback-2026-07-01"],
+        fallbacks="default",  # server-side retry on another model if a safety classifier declines
+    )
+    if resp.stop_reason == "refusal":
+        log.warning("Claude refused (%s) — using template answer", getattr(resp, "stop_details", None))
+        return None
+    return "".join(b.text for b in resp.content if b.type == "text").strip() or None
+
+
+def _complete_gemini(system: str, user: str, max_tokens: int) -> str | None:
+    body = {
+        "system_instruction": {"parts": [{"text": system}]},
+        "contents": [{"role": "user", "parts": [{"text": user}]}],
+        # Extra headroom: on "thinking" Gemini models, reasoning tokens count toward this limit.
+        "generationConfig": {"temperature": 0.2, "maxOutputTokens": max_tokens + 1024},
+    }
+    r = httpx.post(
+        GEMINI_URL.format(model=config.GEMINI_MODEL),
+        json=body,
+        headers={"x-goog-api-key": config.GEMINI_API_KEY},  # header, so the key never appears in URLs/logs
+        timeout=20.0,
+    )
+    r.raise_for_status()
+    j = r.json()
+    if j.get("promptFeedback", {}).get("blockReason"):
+        log.warning("Gemini blocked the prompt: %s", j["promptFeedback"]["blockReason"])
+        return None
+    cand = (j.get("candidates") or [{}])[0]
+    if cand.get("finishReason") in ("SAFETY", "RECITATION", "BLOCKLIST", "PROHIBITED_CONTENT"):
+        log.warning("Gemini stopped: %s — using template answer", cand.get("finishReason"))
+        return None
+    text = "".join(p.get("text", "") for p in cand.get("content", {}).get("parts", []) if not p.get("thought"))
+    return text.strip() or None
+
+
 def _complete(system: str, user: str, max_tokens: int = 1024) -> str | None:
     """One grounded completion. Returns None on any failure so callers can fall back."""
-    if not available():
+    p = provider()
+    if not p:
         return None
     try:
-        client = _get_client()
-        resp = client.beta.messages.create(
-            model=config.LLM_MODEL,
-            max_tokens=max_tokens,
-            system=system,
-            messages=[{"role": "user", "content": user}],
-            output_config={"effort": "low"},  # short, factual chat replies
-            betas=["server-side-fallback-2026-07-01"],
-            fallbacks="default",  # server-side retry on another model if a safety classifier declines
-        )
-        if resp.stop_reason == "refusal":
-            log.warning("LLM refused (%s) — using template answer", getattr(resp, "stop_details", None))
-            return None
-        text = "".join(b.text for b in resp.content if b.type == "text").strip()
-        return text or None
-    except Exception as e:  # SDK missing, network, auth, rate limit … → deterministic fallback
-        log.warning("LLM call failed: %s", e)
+        if p == "gemini":
+            return _complete_gemini(system, user, max_tokens)
+        return _complete_anthropic(system, user, max_tokens)
+    except Exception as e:  # SDK missing, network, auth, quota, rate limit … → deterministic fallback
+        log.warning("%s call failed: %s", p, e)
         return None
 
 

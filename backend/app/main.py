@@ -86,7 +86,7 @@ def health():
         "status": "ok",
         "schemes": len(schemes()),
         "vectorStore": rag.store().name,
-        "llm": config.LLM_MODEL if llm.available() else None,
+        "llm": llm.model_name() if llm.available() else None,
         "bhashini": bhashini.available(),
     }
 
@@ -113,7 +113,7 @@ def simplify(body: SimplifyIn):
     out = llm.simplify(body.text) if llm.available() else None
     if out:
         sentences = [s for s in re.split(r"(?<=[.!?।])\s+", out) if s.strip()]
-        return {"simple": out, "sentences": sentences, "provider": config.LLM_MODEL}
+        return {"simple": out, "sentences": sentences, "provider": llm.model_name()}
     return nlp.simplify(body.text, body.lang)
 
 

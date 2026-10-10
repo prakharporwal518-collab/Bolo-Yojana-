@@ -85,3 +85,60 @@ def test_cors_origin_regex(monkeypatch):
     monkeypatch.delenv("CORS_ORIGIN_REGEX")
     importlib.reload(config)
     importlib.reload(main)
+
+
+class _FakeResp:
+    def __init__(self, payload, status=200):
+        self._p, self.status_code = payload, status
+
+    def raise_for_status(self):
+        if self.status_code >= 400:
+            import httpx
+
+            raise httpx.HTTPStatusError("err", request=httpx.Request("POST", "https://x"), response=httpx.Response(self.status_code))
+
+    def json(self):
+        return self._p
+
+
+def _use_gemini(monkeypatch, fake_post):
+    from app import config
+    from app.adapters import llm
+
+    monkeypatch.setattr(config, "GEMINI_API_KEY", "test-key")
+    monkeypatch.setattr(config, "LLM_PROVIDER", "auto")
+    monkeypatch.setattr(llm.httpx, "post", fake_post)
+
+
+def test_gemini_grounded_answer(monkeypatch):
+    seen = {}
+
+    def fake_post(url, json, headers, timeout):
+        seen.update(url=url, headers=headers, body=json)
+        return _FakeResp({"candidates": [{"content": {"parts": [{"text": "Aapka e-KYC poora karein. Helpline 155261."}]}, "finishReason": "STOP"}]})
+
+    _use_gemini(monkeypatch, fake_post)
+    r = client.post("/ask", json={"text": "mera kisan wala paisa nahi aaya"}).json()
+    assert r["text"] == "Aapka e-KYC poora karein. Helpline 155261."
+    assert "gemini" in r["provider"] and r["confidence"] == "high"
+    assert "test-key" not in seen["url"] and seen["headers"]["x-goog-api-key"] == "test-key"
+    assert "<context>" in seen["body"]["contents"][0]["parts"][0]["text"]
+    assert client.get("/health").json()["llm"].startswith("gemini")
+
+
+def test_gemini_failures_fall_back_to_verified_data(monkeypatch):
+    blocked = lambda *a, **k: _FakeResp({"candidates": [{"finishReason": "SAFETY"}]})  # noqa: E731
+    _use_gemini(monkeypatch, blocked)
+    r = client.post("/ask", json={"text": "mera kisan wala paisa nahi aaya"}).json()
+    assert "e-KYC" in r["text"] and "gemini" not in r["provider"]
+
+    quota = lambda *a, **k: _FakeResp({}, status=429)  # noqa: E731
+    _use_gemini(monkeypatch, quota)
+    r = client.post("/ask", json={"text": "mera kisan wala paisa nahi aaya"}).json()
+    assert "e-KYC" in r["text"] and r["provider"].startswith("backend-rag")
+
+
+def test_gemini_unsure_answer_marks_low_confidence(monkeypatch):
+    _use_gemini(monkeypatch, lambda *a, **k: _FakeResp({"candidates": [{"content": {"parts": [{"text": "Mujhe iski pakki jaankari nahi hai. 181 par phone karein."}]}}]}))
+    r = client.post("/ask", json={"text": "pm kisan ka paisa kab aayega"}).json()
+    assert r["confidence"] == "low"

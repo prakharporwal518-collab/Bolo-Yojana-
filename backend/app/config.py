@@ -25,8 +25,12 @@ CORS_ORIGINS = [o.strip() for o in os.getenv("CORS_ORIGINS", "http://localhost:5
 # Optional regex, e.g. ^https://bolo-yojana(-[a-z0-9]+)?\.onrender\.com$ (Render may add a suffix to the URL)
 CORS_ORIGIN_REGEX = os.getenv("CORS_ORIGIN_REGEX") or None
 
+# LLM provider: auto | gemini | anthropic | none   (auto = whichever key is set; Gemini first)
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "auto").lower()
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-LLM_MODEL = os.getenv("LLM_MODEL", "claude-opus-5-5")
+LLM_MODEL = os.getenv("LLM_MODEL", "claude-opus-5-5")  # Claude model
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "") or os.getenv("GOOGLE_API_KEY", "")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 VECTOR_STORE = os.getenv("VECTOR_STORE", "auto")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")

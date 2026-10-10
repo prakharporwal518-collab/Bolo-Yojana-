@@ -142,7 +142,8 @@ backend/
 `render.yaml` is a Render Blueprint that creates both services at once:
 
 1. In the Render dashboard, choose **New → Blueprint** and pick this repo.
-2. Render asks for the secret values `ANTHROPIC_API_KEY`, `BHASHINI_USER_ID` and `BHASHINI_API_KEY`. All are optional; leave them blank to run without keys.
+2. Render asks for the secret values `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `BHASHINI_USER_ID` and `BHASHINI_API_KEY`. All are optional; leave them blank to run without keys. One LLM key is enough. With `LLM_PROVIDER=auto`, Gemini is used if its key is set.
+   - Already created the services? Add `GEMINI_API_KEY` under **bolo-yojana-api → Environment** and save; Render redeploys automatically.
 3. Click **Apply**. You get:
    - `bolo-yojana-api`: the FastAPI Web Service (free plan, health check `/health`)
    - `bolo-yojana`: the static PWA, built with the backend URL baked in
@@ -180,14 +181,14 @@ Interactive docs are at `http://localhost:8000/docs`.
 | Speech → text | Web Speech API (`hi-IN`, `en-IN`) | **Bhashini ASR** (IndicConformer) or self-hosted **IndicWhisper** | backend `.env`: `BHASHINI_USER_ID`, `BHASHINI_API_KEY`; frontend: `VITE_STT_PROVIDER=backend` |
 | Translation | Offline phrasebook + dictionary | **Bhashini NMT** or **IndicTrans2** (`ai4bharat/indictrans2-*-dist-200M`) or LLM | `TRANSLATE_PROVIDER=auto\|bhashini\|indictrans2\|llm`; frontend `VITE_TRANSLATE_PROVIDER=backend` |
 | Text → speech | Browser SpeechSynthesis | **Bhashini TTS** (Indic-TTS) | `VITE_TTS_PROVIDER=backend` |
-| Answers / simplification | Data-only templates + rule simplifier | **Claude** (`claude-opus-5-5`, configurable `LLM_MODEL`), restricted to retrieved chunks | `ANTHROPIC_API_KEY=…` + `pip install anthropic` |
+| Answers / simplification | Data-only templates + rule simplifier | **Gemini** (`gemini-2.5-flash`, `GEMINI_MODEL`) or **Claude** (`claude-opus-5-5`, `LLM_MODEL`), restricted to retrieved chunks | `GEMINI_API_KEY=…` (no extra package) or `ANTHROPIC_API_KEY=…` + `pip install anthropic`; choose with `LLM_PROVIDER=auto\|gemini\|anthropic` |
 | Retrieval | TF-IDF (pure Python) / browser keywords | **FAISS** + multilingual sentence-transformers, or **ChromaDB** | `pip install faiss-cpu sentence-transformers` → `VECTOR_STORE=auto` |
 | OCR | Tesseract.js in the browser | pytesseract / Bhashini OCR | install `pytesseract` + the Tesseract binary with `hin` data |
 
 - **Bhashini flow** (`backend/app/adapters/bhashini.py`): one `getModelsPipeline` config call returns the inference endpoint, auth header and `serviceId`, which are cached. Then one inference call per request for `asr`, `translation` or `tts`. Check field names against the current ULCA docs when you get credentials.
 - **IndicTrans2** (`backend/app/adapters/indictrans.py`) loads lazily and needs `transformers`, `torch` and `IndicTransToolkit`.
 - **Protected terms**: before any machine translation, glossary terms are replaced with `[[n]]` placeholders and restored afterwards, so *Aadhaar* never turns into "foundation".
-- **LLM guardrails**: the system prompt allows only facts inside `<context>`, requires the "pakki jaankari nahi" sentence when unsure, uses short sentences and Indian formats, and forbids markdown because the output is spoken. A refusal, timeout or missing key falls back to the verified template answer. Server-side `fallbacks: "default"` is enabled for safety-classifier declines.
+- **LLM guardrails**: the system prompt allows only facts inside `<context>`, requires the "pakki jaankari nahi" sentence when unsure, uses short sentences and Indian formats, and forbids markdown because the output is spoken. A refusal or safety block, timeout, quota error or missing key falls back to the verified template answer. Gemini gets the key in the `x-goog-api-key` header, never the URL. For Claude, server-side `fallbacks: "default"` is enabled for safety-classifier declines.
 
 ---
 
