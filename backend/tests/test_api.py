@@ -68,3 +68,20 @@ def test_optional_providers_degrade_gracefully():
     assert client.post("/stt", json={"audio_base64": "AAAA"}).status_code == 501
     assert client.post("/translate", json={"text": "नमस्ते", "source": "hi", "target": "en"}).status_code in (200, 503)
     assert client.post("/ask", json={"text": ""}).status_code == 422
+
+
+def test_cors_origin_regex(monkeypatch):
+    import importlib
+
+    from app import config, main
+
+    monkeypatch.setenv("CORS_ORIGIN_REGEX", r"^https://bolo-yojana(-[a-z0-9]+)?\.onrender\.com$")
+    importlib.reload(config)
+    c = TestClient(importlib.reload(main).app)
+    ok = c.get("/health", headers={"Origin": "https://bolo-yojana-x7k2.onrender.com"})
+    bad = c.get("/health", headers={"Origin": "https://evil.example.com"})
+    assert ok.headers.get("access-control-allow-origin") == "https://bolo-yojana-x7k2.onrender.com"
+    assert "access-control-allow-origin" not in bad.headers
+    monkeypatch.delenv("CORS_ORIGIN_REGEX")
+    importlib.reload(config)
+    importlib.reload(main)
