@@ -1,0 +1,49 @@
+@import '@fontsource/noto-sans-devanagari/400.css';
+@import '@fontsource/noto-sans-devanagari/600.css';
+@import '@fontsource/noto-sans-devanagari/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font size is scaled from the root so every rem-based size grows (accessibility). */
+html { font-size: calc(16px * var(--font-scale, 1)); -webkit-tap-highlight-color: transparent; }
+body { @apply bg-cream text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-100; line-height: 1.6; }
+
+@layer components {
+  .card { @apply rounded-3xl bg-white p-5 shadow-sm ring-1 ring-stone-200/70 dark:bg-stone-900 dark:ring-stone-800; }
+  .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-2xl px-5 py-3 font-semibold transition active:scale-[.98] focus:outline-none focus-visible:ring-4 focus-visible:ring-saffron-400/60 disabled:opacity-50; }
+  .btn-primary { @apply btn bg-saffron-500 text-white shadow-md hover:bg-saffron-600; }
+  .btn-green { @apply btn bg-leaf-500 text-white shadow-md hover:bg-leaf-600; }
+  .btn-ghost { @apply btn bg-stone-100 text-stone-800 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-100 dark:hover:bg-stone-700; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold; }
+  .input { @apply min-h-[48px] w-full rounded-2xl border border-stone-300 bg-white px-4 py-3 text-base outline-none focus:border-saffron-500 focus:ring-4 focus:ring-saffron-400/30 dark:border-stone-700 dark:bg-stone-900; }
+  .h-title { @apply text-2xl font-bold leading-tight sm:text-3xl; }
+}
+
+/* ---------- Lite mode: no animations, no decorative images (low-end phones / 2G) ---------- */
+.lite *, .lite *::before, .lite *::after { animation: none !important; transition: none !important; }
+.lite .decor { display: none !important; }
+.lite .shadow-md, .lite .shadow-sm, .lite .shadow-lg { box-shadow: none !important; }
+
+/* ---------- High-contrast mode ---------- */
+.hc body { background: #000 !important; color: #fff !important; }
+.hc .card { background: #000 !important; border: 2px solid #fff !important; box-shadow: none !important; }
+.hc .btn-primary, .hc .btn-green { background: #ffd400 !important; color: #000 !important; border: 2px solid #fff; }
+.hc .btn-ghost { background: #000 !important; color: #fff !important; border: 2px solid #fff; }
+.hc a { color: #ffd400 !important; text-decoration: underline; }
+.hc .input { background: #000 !important; color: #fff !important; border: 2px solid #fff !important; }
+.hc .text-stone-500, .hc .text-stone-600, .hc .text-stone-400 { color: #fff !important; }
+.hc [class*='bg-'] { --tw-bg-opacity: 1; }
+.hc .glossary-term { background: #ffd400 !important; color: #000 !important; }
+
+/* WhatsApp-style chat theme */
+.wa-chat { background-color: #ECE5DD; background-image: radial-gradient(rgba(0,0,0,.035) 1px, transparent 1px); background-size: 14px 14px; }
+.dark .wa-chat { background-color: #0b141a; }
+
+.glossary-term { @apply cursor-help rounded-md bg-amber-100 px-1 font-semibold text-amber-900 underline decoration-dotted underline-offset-2 dark:bg-amber-900/40 dark:text-amber-200; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
